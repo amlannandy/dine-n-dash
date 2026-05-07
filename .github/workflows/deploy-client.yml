@@ -1,0 +1,36 @@
+name: Deploy Client
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy client app to Vercel
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type-check
+        run: pnpm --filter client type-check
+
+      - name: Build
+        run: pnpm --filter client build
+
+      - name: Deploy to Vercel
+        run: npx vercel deploy apps/client/dist --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_CLIENT }}

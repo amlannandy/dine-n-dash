@@ -34,8 +34,7 @@ COPY apps/api/package.json ./apps/api/
 
 RUN pnpm install --frozen-lockfile --prod
 
-# Copy compiled output
-COPY --from=builder /app/packages/types/dist ./packages/types/dist
+# Copy compiled output (types package has no dist — pure unions, no JS output)
 COPY --from=builder /app/apps/api/dist ./apps/api/dist
 
 EXPOSE 3000
