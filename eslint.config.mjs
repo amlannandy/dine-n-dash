@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import prettierConfig from 'eslint-config-prettier';
 
 const REACT_APPS = ['apps/partner', 'apps/client', 'apps/admin'];
@@ -16,11 +17,32 @@ export default tseslint.config(
   {
     files: [...apiFiles, ...reactFiles, ...typesFiles],
     extends: [js.configs.recommended, ...tseslint.configs.recommended, prettierConfig],
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-non-null-assertion': 'warn',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            // Node builtins
+            ['^node:'],
+            // External packages
+            ['^@?\\w'],
+            // Internal aliases (@/)
+            ['^@/'],
+            // Relative imports
+            ['^\\.'],
+            // Type-only imports last
+            ['^.*\\u0000$'],
+          ],
+        },
+      ],
+      'simple-import-sort/exports': 'error',
     },
   },
 

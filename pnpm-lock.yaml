@@ -23,6 +23,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^5.1.0
         version: 5.2.0(eslint@9.39.4)
+      eslint-plugin-simple-import-sort:
+        specifier: ^13.0.0
+        version: 13.0.0(eslint@9.39.4)
       prettier:
         specifier: ^3.0.0
         version: 3.8.3
@@ -2964,6 +2967,14 @@ packages:
       semver: 6.3.1
       string.prototype.matchall: 4.0.12
       string.prototype.repeat: 1.0.0
+    dev: true
+
+  /eslint-plugin-simple-import-sort@13.0.0(eslint@9.39.4):
+    resolution: {integrity: sha512-McAc+/Nlvcg4byY/CABGH8kqnefWBj8s3JA2okEtz8ixbECQgU46p0HkTUKa4YS7wvgGceimlc34p1nXqbWqtA==}
+    peerDependencies:
+      eslint: '>=5.0.0'
+    dependencies:
+      eslint: 9.39.4
     dev: true
 
   /eslint-scope@5.1.1:

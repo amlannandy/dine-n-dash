@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate,Route, Routes } from 'react-router-dom';
 
 function Dashboard() {
   return <div><h1>Partner Dashboard</h1><p>Manage your restaurant, menu, and tables.</p></div>;

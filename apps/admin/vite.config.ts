@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@dine-n-dash/types': resolve(__dirname, '../../packages/types/src/index.ts'),
+      '@': resolve(__dirname, 'src'),
     },
   },
   server: {

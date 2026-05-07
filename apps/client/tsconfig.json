@@ -16,7 +16,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@dine-n-dash/types": ["../../packages/types/src/index.ts"]
+      "@dine-n-dash/types": ["../../packages/types/src/index.ts"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate,Route, Routes } from 'react-router-dom';
 
 function QRScan() {
   return <div><h1>Scan QR Code</h1><p>Scan the table QR code to start ordering.</p></div>;
