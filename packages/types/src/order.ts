@@ -1,24 +1,8 @@
-export enum OrderStatus {
-  PENDING = 'pending',
-  CONFIRMED = 'confirmed',
-  PREPARING = 'preparing',
-  READY = 'ready',
-  SERVED = 'served',
-  CANCELLED = 'cancelled',
-}
+export type OrderStatus = 'pending' | 'confirmed' | 'preparing' | 'ready' | 'served' | 'cancelled';
 
-export enum PaymentStatus {
-  UNPAID = 'unpaid',
-  PENDING = 'pending',
-  PAID = 'paid',
-  REFUNDED = 'refunded',
-}
+export type PaymentStatus = 'unpaid' | 'pending' | 'paid' | 'refunded';
 
-export enum PaymentMethod {
-  CASH = 'cash',
-  CARD = 'card',
-  UPI = 'upi',
-}
+export type PaymentMethod = 'cash' | 'card' | 'upi';
 
 export interface OrderItem {
   id: string;

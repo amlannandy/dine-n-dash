@@ -1,14 +1,6 @@
-export enum RestaurantStatus {
-  PENDING = 'pending',
-  APPROVED = 'approved',
-  SUSPENDED = 'suspended',
-}
+export type RestaurantStatus = 'pending' | 'approved' | 'suspended';
 
-export enum SubscriptionPlan {
-  BASIC = 'basic',
-  PRO = 'pro',
-  ENTERPRISE = 'enterprise',
-}
+export type SubscriptionPlan = 'basic' | 'pro' | 'enterprise';
 
 export interface Restaurant {
   id: string;
