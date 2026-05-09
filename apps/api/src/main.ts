@@ -1,13 +1,17 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+
+import { setupSwagger } from '@/config/swagger';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Setup global prefix
   app.setGlobalPrefix('api');
+
+  // Enable CORS for frontend
   app.enableCors({
     origin: [
       process.env.PARTNER_URL ?? 'http://localhost:5173',
@@ -17,6 +21,7 @@ async function bootstrap() {
     credentials: true,
   });
 
+  // Global DTO validation
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -25,14 +30,8 @@ async function bootstrap() {
     }),
   );
 
-  const config = new DocumentBuilder()
-    .setTitle('Dine & Dash API')
-    .setDescription('Restaurant menu and ordering system API')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/docs', app, document);
+  // Setup Swagger API docs
+  setupSwagger(app);
 
   const port = process.env.PORT ?? 3000;
   await app.listen(port);

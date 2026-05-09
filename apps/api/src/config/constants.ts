@@ -1,0 +1,13 @@
+// Environment Variables Keys
+export const ENV_KEYS = {
+  DB_HOST: 'DB_HOST',
+  DB_PORT: 'DB_PORT',
+  DB_USERNAME: 'DB_USERNAME',
+  DB_PASSWORD: 'DB_PASSWORD',
+  DB_DATABASE: 'DB_DATABASE',
+  NODE_ENV: 'NODE_ENV',
+  PORT: 'PORT',
+  PARTNER_URL: 'PARTNER_URL',
+  CLIENT_URL: 'CLIENT_URL',
+  ADMIN_URL: 'ADMIN_URL',
+} as const;

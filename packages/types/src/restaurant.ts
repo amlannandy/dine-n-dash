@@ -1,10 +1,9 @@
 export type RestaurantStatus = 'pending' | 'approved' | 'suspended';
 
-export type SubscriptionPlan = 'basic' | 'pro' | 'enterprise';
+export type SubscriptionPlan = 'basic' | 'pro';
 
 export interface Restaurant {
   id: string;
-  ownerId: string;
   name: string;
   description: string;
   address: string;
@@ -16,14 +15,4 @@ export interface Restaurant {
   subscriptionExpiresAt?: string;
   createdAt: string;
   updatedAt: string;
-}
-
-export interface Table {
-  id: string;
-  restaurantId: string;
-  number: number;
-  capacity: number;
-  qrCode: string;
-  isOccupied: boolean;
-  createdAt: string;
 }
