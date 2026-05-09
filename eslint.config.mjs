@@ -24,25 +24,28 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-non-null-assertion': 'warn',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', fixStyle: 'inline-type-imports' }],
       'simple-import-sort/imports': [
         'error',
         {
           groups: [
-            // Node builtins
             ['^node:'],
-            // External packages
             ['^@?\\w'],
-            // Internal aliases (@/)
             ['^@/'],
-            // Relative imports
             ['^\\.'],
-            // Type-only imports last
             ['^.*\\u0000$'],
           ],
         },
       ],
       'simple-import-sort/exports': 'error',
+    },
+  },
+
+  // NestJS DI requires value imports for injectable classes — consistent-type-imports conflicts with that
+  {
+    files: apiFiles,
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'off',
     },
   },
 
